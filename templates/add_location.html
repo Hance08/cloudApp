@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增地點</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>新增地點</h1>
+        <form action="{{ url_for('add_location') }}" method="POST" enctype="multipart/form-data">
+            <label for="name">地點名稱:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="description">地點介紹:</label>
+            <textarea id="description" name="description" required></textarea>
+            
+            <label for="image">上傳圖片:</label>
+            <input type="file" id="image" name="image" required>
+            
+            <button type="submit" class="btn">新增地點</button>
+        </form>
+        <a href="{{ url_for('index') }}" class="btn">回到首頁</a>
+    </div>
+</body>
+</html>
