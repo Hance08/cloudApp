@@ -4,22 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>地點介紹首頁</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="header-container">
-            <h1>探索地點</h1>
+    <div class="header-container">
+        <div class="header-title">
+            <a href="{{ url_for('index') }}">MyBlog</a>
         </div>
+        <div class="header-links">
+            {% if current_user.is_authenticated %}
+                <span>歡迎, {{ current_user.username }}!</span>
+                <a href="{{ url_for('logout') }}">登出</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">登入</a>
+                <a href="{{ url_for('register') }}">註冊</a>
+            {% endif %}
+        </div>
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="dropdown-menu">
+            <ul>
+                <li><a href="{{ url_for('index') }}">首頁</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('add_location') }}">新增地點</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
 
-        {% if current_user.is_authenticated %}
-            <p>歡迎, <strong>{{ current_user.username }}</strong>!</p>
-            <a href="{{ url_for('logout') }}">登出</a>
-        {% else %}
-            <a href="{{ url_for('login') }}">登入</a>
-            <a href="{{ url_for('register') }}">註冊</a>
-        {% endif %}
-
+    <div class="container">
         <div class="card-grid">
             {% for location in locations %}
             <div class="card">
@@ -28,14 +46,15 @@
                     <h2 class="card-title">{{ location.name }}</h2>
                     <p class="card-description">{{ location.description[:50] }}...</p>
                     <a href="{{ url_for('location', id=location.id) }}">閱讀更多</a>
+                    {% if current_user.is_authenticated %}
+                        <form action="{{ url_for('delete_location', id=location.id) }}" method="post" class="delete-form">
+                            <button type="submit" onclick="return confirm('確定要刪除這個地點嗎？');" class="delete-button">刪除</button>
+                        </form>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
         </div>
-        
-        {% if current_user.is_authenticated %}
-            <a href="{{ url_for('add_location') }}" style="margin-top: 20px; display: inline-block;">新增地點</a>
-        {% endif %}
     </div>
 </body>
 </html>
