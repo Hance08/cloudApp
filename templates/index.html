@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>地點介紹首頁</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
 </head>
 <body>
     <div class="header-container">
@@ -31,6 +32,11 @@
                     <h2 class="card-title">{{ location.name }}</h2>
                     <p class="card-description">{{ location.description[:50] }}...</p>
                     <a href="{{ url_for('location', id=location.id) }}">閱讀更多</a>
+                    {% if current_user.is_authenticated %}
+                        <form action="{{ url_for('delete_location', id=location.id) }}" method="post" class="delete-form">
+                            <button type="submit" onclick="return confirm('確定要刪除這個地點嗎？');" class="delete-button">刪除</button>
+                        </form>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
