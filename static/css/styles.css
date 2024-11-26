@@ -10,24 +10,57 @@ body {
 
 .container {
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 0 auto;
     padding: 20px;
 }
 
 .header-container {
-    text-align: center;
-    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #828b95;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.header-container h1 {
-    font-size: 2.5em;
-    color: #007bff;
+.header-title {
+    font-size: 1.5em;
+    margin: 0;
+    font-weight: bold;
+}
+
+.header-title a {
+    font-size: 1.5em;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* .header-title a:hover{
+    text-decoration: underline;
+} */
+
+.header-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 15px;
+    font-size: 1em;
+}
+
+.header-links a:hover {
+    text-decoration: underline;
 }
 
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+    margin-top: 20px;
 }
 
 .card {
