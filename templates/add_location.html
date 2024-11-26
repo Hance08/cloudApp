@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新增地點</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
+    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
 </head>
 <body>
     <div class="header-container">
@@ -19,6 +20,19 @@
                 <a href="{{ url_for('login') }}">登入</a>
                 <a href="{{ url_for('register') }}">註冊</a>
             {% endif %}
+        </div>
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="dropdown-menu">
+            <ul>
+                <li><a href="{{ url_for('index') }}">首頁</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('add_location') }}">新增地點</a></li>
+                {% endif %}
+            </ul>
         </div>
     </div>
     <div class="container">
