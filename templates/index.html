@@ -6,6 +6,7 @@
     <title>地點介紹首頁</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+    <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
 </head>
 <body>
     <div class="header-container">
@@ -20,6 +21,19 @@
                 <a href="{{ url_for('login') }}">登入</a>
                 <a href="{{ url_for('register') }}">註冊</a>
             {% endif %}
+        </div>
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="dropdown-menu">
+            <ul>
+                <li><a href="{{ url_for('index') }}">首頁</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('add_location') }}">新增地點</a></li>
+                {% endif %}
+            </ul>
         </div>
     </div>
 
@@ -41,10 +55,6 @@
             </div>
             {% endfor %}
         </div>
-
-        {% if current_user.is_authenticated %}
-            <a href="{{ url_for('add_location') }}" style="margin-top: 20px; display: inline-block;">新增地點</a>
-        {% endif %}
     </div>
 </body>
 </html>
