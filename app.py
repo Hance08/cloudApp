@@ -108,6 +108,11 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        confirm_password = request.form['confirm_password']
+        
+        if password != confirm_password:
+            flash('密碼與確認密碼不一致！', 'danger')
+            return redirect(url_for('register'))
         
         # 使用 'pbkdf2:sha256' 來加密密碼
         hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
