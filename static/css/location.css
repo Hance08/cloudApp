@@ -1,0 +1,60 @@
+/* 容器樣式 */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* 圖片容器樣式 */
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-container img:hover {
+    transform: scale(1.05);
+}
+
+/* 描述文字樣式 */
+.container p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    text-align: left;
+    margin: 20px 0;
+}
+
+/* 回應不同裝置 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .container h1 {
+        font-size: 1.5rem;
+    }
+
+    .container p {
+        font-size: 1rem;
+    }
+}
