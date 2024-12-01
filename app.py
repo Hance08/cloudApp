@@ -111,12 +111,14 @@ def register():
         confirm_password = request.form['confirm_password']
         
         if password != confirm_password:
+            # 顯示錯誤訊息而不是重導
             flash('密碼與確認密碼不一致！', 'danger')
-            return redirect(url_for('register'))
+            return render_template('register.html', username=username)  # 回傳用戶輸入的 username
         
         # 使用 'pbkdf2:sha256' 來加密密碼
         hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
         
+        # 儲存至資料庫
         new_user = User(username=username, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
