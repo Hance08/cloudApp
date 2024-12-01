@@ -1,6 +1,6 @@
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* 固定為三欄 */
     gap: 20px;
     margin-top: 20px;
 }
@@ -12,6 +12,14 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.2s, box-shadow 0.2s;
+    min-height: 320px; /* 設定卡片最小高度，讓外觀一致 */
+}
+
+.card-grid::after {
+    content: '';
+    display: block;
+    visibility: hidden;
+    grid-column: span 3; /* 占滿剩餘空間，保持三欄結構 */
 }
 
 .card:hover {
