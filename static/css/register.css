@@ -1,0 +1,78 @@
+/* 註冊表單的美化 */
+.container {
+    max-width: 400px; /* 限制表單寬度 */
+    margin: 50px auto; /* 置中表單 */
+    padding: 20px; /* 內距 */
+    background-color: #f4f4f4; /* 背景色，柔和 */
+    border-radius: 10px; /* 圓角邊框 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+    font-family: Arial, sans-serif; /* 標準字型 */
+}
+
+.container h1 {
+    font-size: 1.8rem; /* 標題字體大小 */
+    color: #333; /* 標題顏色 */
+    margin-bottom: 20px; /* 與下方表單分隔 */
+    text-align: center; /* 置中對齊 */
+    font-weight: bold; /* 字體加粗 */
+}
+
+.container form {
+    display: flex; /* 使用彈性佈局 */
+    flex-direction: column; /* 垂直排列 */
+    gap: 15px; /* 元素之間的間距 */
+}
+
+.container label {
+    font-size: 1rem; /* 標籤字體大小 */
+    color: #555; /* 標籤顏色 */
+    margin-bottom: 5px; /* 與輸入框分隔 */
+}
+
+.container input[type="text"],
+.container input[type="password"] {
+    width: 100%; /* 滿寬 */
+    padding: 10px; /* 內距 */
+    font-size: 1rem; /* 字體大小 */
+    border: 1px solid #ccc; /* 邊框顏色 */
+    border-radius: 5px; /* 圓角 */
+    transition: border-color 0.3s ease-in-out; /* 焦點效果 */
+}
+
+.container input[type="text"]:focus,
+.container input[type="password"]:focus {
+    border-color: #007bff; /* 聚焦時改變邊框顏色 */
+    outline: none; /* 移除默認外框 */
+}
+
+.container button {
+    padding: 10px 15px; /* 按鈕大小 */
+    font-size: 1rem; /* 字體大小 */
+    background-color: #007bff; /* 按鈕背景色 */
+    color: #fff; /* 按鈕字體顏色 */
+    border: none; /* 移除邊框 */
+    border-radius: 5px; /* 圓角 */
+    cursor: pointer; /* 鼠標樣式 */
+    transition: background-color 0.3s ease-in-out; /* 漸變效果 */
+}
+
+.container button:hover {
+    background-color: #0056b3; /* 滑鼠懸停時的顏色 */
+}
+
+.container p {
+    font-size: 0.9rem; /* 字體大小 */
+    color: #666; /* 顏色 */
+    margin-top: 15px; /* 與上方表單分隔 */
+    text-align: center; /* 置中對齊 */
+}
+
+.container p a {
+    color: #007bff; /* 連結顏色 */
+    text-decoration: none; /* 移除下劃線 */
+    font-weight: bold; /* 加粗 */
+}
+
+.container p a:hover {
+    text-decoration: underline; /* 滑鼠懸停時增加下劃線 */
+}
