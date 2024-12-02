@@ -38,7 +38,17 @@
     </div>
     <div class="container">
         <h1>登入</h1>
-        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
         <form action="{{ url_for('login') }}" method="POST">
             <label for="username">帳號:</label>
             <input type="text" id="username" name="username" required>
